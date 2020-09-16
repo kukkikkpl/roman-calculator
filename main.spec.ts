@@ -1,76 +1,102 @@
-import {decimalToRoman, addRoman} from './main'
-import {expect} from 'chai';
 import 'mocha';
+import { expect } from 'chai';
+import { romanToInt, intToRoman, calculateRomanNumbers } from './main'
 
-describe('Roman to Number', () => {
-  it('should return Roman numerals (I)', () => {
-    // given
-    const number = 1;
-
-    // when
-    const roman = decimalToRoman(number);
-
-    // then
-    expect(roman).equal('I');
+describe('Roman to number', () => {
+  it('III is equal to 3', () => {
+    const roman = 'III';
+    const num = romanToInt(roman);
+    expect(num).equal(3)
   });
 
-  it('should return Roman numerals (VI)', () => {
-    // given
-    const number = 6;
-
-    // when
-    const roman = decimalToRoman(number);
-
-    // then
-    expect(roman).equal('VI');
+  it('XIV is equal to 14', () => {
+    const roman = 'XIV';
+    const num = romanToInt(roman);
+    expect(num).equal(14)
   });
 
-  it('should return Roman numerals (CM)', () => {
-    // given
-    const number = 900;
-
-    // when
-    const roman = decimalToRoman(number);
-
-    // then
-    expect(roman).equal('CM');
+  it('LX is equal to 60', () => {
+    const roman = 'LX';
+    const num = romanToInt(roman);
+    expect(num).equal(60)
   });
 
-  it('should return Roman numerals (VIII)', () => {
-    // given
-    const number = 9;
+  it('LXXIV is equal to 74', () => {
+    const roman = 'LXXIV';
+    const num = romanToInt(roman);
+    expect(num).equal(74)
+  });
 
-    // when
-    const roman = decimalToRoman(number);
-
-    // then
-    expect(roman).equal('IX');
+  it('CM is equal to 900', () => {
+    const roman = 'CM';
+    const num = romanToInt(roman);
+    expect(num).equal(900)
   });
 
 });
 
-describe('Calculation', () => {
-  it('I + I should be II', () => {
-    // given
-    const romanNumber = decimalToRoman(1);
-    const romanNumber2 = decimalToRoman(1);
 
-    // when
-    const roman = addRoman(romanNumber, romanNumber2);
-
-    // then
-    expect(roman).equal('II');
+describe('Number to roman', () => {
+  it('3 is equal to III', () => {
+    const num = 3;
+    const roman = intToRoman(num);
+    expect(roman).equal('III')
   });
 
-  it('IV + IV should be VIII', () => {
-    // given
-    const romanNumber = decimalToRoman(4);
-    const romanNumber2 = decimalToRoman(4);
-
-    // when
-    const roman = addRoman(romanNumber, romanNumber2);
-
-    // then
-    expect(roman).equal('VIII');
+  it('14 is equal to XIV', () => {
+    const num = 14;
+    const roman = intToRoman(num);
+    expect(roman).equal('XIV')
   });
+
+  it('60 is equal to LX', () => {
+    const num = 60;
+    const roman = intToRoman(num);
+    expect(roman).equal('LX')
+  });
+
+  it('74 is equal to LXXIV', () => {
+    const num = 74;
+    const roman = intToRoman(num);
+    expect(roman).equal('LXXIV')
+  });
+
+  it('900 is equal to CM', () => {
+    const num = 900;
+    const roman = intToRoman(num);
+    expect(roman).equal('CM')
+  });
+
+});
+
+
+describe('Roman calculator', () => {
+  it('XIV + LX = LXXIV', () => {
+    const roman1 = 'XIV';
+    const roman2 = 'LX';
+    const sum = calculateRomanNumbers(roman1, roman2)
+    expect(sum).equal('LXXIV')
+  });
+
+  it('XX + II = XXII', () => {
+    const roman1 = 'XX';
+    const roman2 = 'II';
+    const sum = calculateRomanNumbers(roman1, roman2)
+    expect(sum).equal('XXII')
+  });
+
+  it('II + II = IV', () => {
+    const roman1 = 'II';
+    const roman2 = 'II';
+    const sum = calculateRomanNumbers(roman1, roman2)
+    expect(sum).equal('IV')
+  });
+
+  it('D + D = M', () => {
+    const roman1 = 'D';
+    const roman2 = 'D';
+    const sum = calculateRomanNumbers(roman1, roman2)
+    expect(sum).equal('M')
+  });
+
 });
