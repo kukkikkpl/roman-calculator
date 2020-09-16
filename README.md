@@ -28,3 +28,9 @@ There are some rules to a Roman number:
 - Code comments (Google how to write good code comments).
 - Make sure that your logic can be automated tested by writing unit tests. Ensure your logic can correct with a *single* command-line command.
 - Refactor your code! After the first go-round, is your code clean? If it's not, learn to refactor your code. How do you feel looking at the code you wrote from a week ago?
+
+
+## Run test cases
+```
+bash run_test_docker.sh
+```
